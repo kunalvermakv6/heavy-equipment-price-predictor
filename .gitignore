@@ -1,0 +1,47 @@
+# Python
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.egg-info/
+dist/
+build/
+*.eggs/
+.pytest_cache/
+.mypy_cache/
+
+# Large dataset files (keep only models and code)
+heavy-equipment-selling-price-prediction-challenge*/
+*.csv
+*.ipynb
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Frontend
+frontend/node_modules/
+frontend/dist/
+
+# Environment & secrets
+.env
+.env.local
+.env.*.local
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# But KEEP the pkl model files - they are needed
+# !lgbm_model.pkl
+# !backend/preprocessor.pkl
+xgb_model.pkl
