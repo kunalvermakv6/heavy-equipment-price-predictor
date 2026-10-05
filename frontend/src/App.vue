@@ -311,7 +311,7 @@
               <span class="badge-post">POST</span>
               <span class="endpoint-path">/predict</span>
             </div>
-            <p class="api-tip">FastAPI interactive Swagger UI available at <a href="/docs" target="_blank">/docs</a></p>
+            <p class="api-tip">FastAPI interactive Swagger UI available at <a :href="`${API_BASE_URL}/docs`" target="_blank">/docs</a></p>
           </div>
         </div>
       </div>
@@ -326,6 +326,8 @@
 
 <script setup>
 import { ref, onMounted } from 'vue'
+
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || ''
 
 const healthStatus = ref({
   isHealthy: false,
@@ -464,7 +466,7 @@ const loadPreset = (preset, idx) => {
 
 const checkHealth = async () => {
   try {
-    const res = await fetch('/health')
+    const res = await fetch(`${API_BASE_URL}/health`)
     if (res.ok) {
       const data = await res.json()
       healthStatus.value = {
@@ -483,7 +485,7 @@ const checkHealth = async () => {
 const runPrediction = async () => {
   isLoading.value = true
   try {
-    const res = await fetch('/predict', {
+    const res = await fetch(`${API_BASE_URL}/predict`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
